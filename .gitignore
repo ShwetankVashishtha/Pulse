@@ -1,0 +1,18 @@
+# Node.js dependencies
+node_modules/
+
+# Playwright test result directories
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Allure reporting
+/allure-results/
+/allure-report/
+
+# MacOS system files
+**/.DS_Store
+
+# Environment variables
+.env
