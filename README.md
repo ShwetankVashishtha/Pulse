@@ -26,16 +26,16 @@ Playwright dependencies and browsers will be installed during setup.
 
 1. Clone this repository:
 
-   git clone https://github.com/your-username/pulse-playwright-framework.git
-   cd pulse-playwright-framework
+        git clone https://github.com/your-username/pulse.git
+        cd pulse
 
 2. Install project dependencies:
 
-   npm install
+        npm install
 
 3. Install Playwright browsers:
 
-   npx playwright install
+        npx playwright install
 
 ## Running Tests
     
