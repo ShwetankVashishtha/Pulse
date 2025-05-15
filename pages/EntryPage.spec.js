@@ -1,5 +1,5 @@
 const { expect } = require('@playwright/test');
-const { RepurposeUtils } = require('../commons/RepurposeUtils.spec'); // Import repurpose project utility class
+const { PulseUtils } = require('../commons/PulseUtils.spec'); // Import framework utility class
 
 // EntryPage class for handling interactions on the entry pages of the application
 exports.EntryPage = class EntryPage {
@@ -10,7 +10,7 @@ exports.EntryPage = class EntryPage {
 
   constructor(page) {
     this.page = page; // Store the Playwright page object
-    this.repurposeUtils = new RepurposeUtils(this.page); // Instantiate RepurposeUtils class
+    this.pulseUtils = new PulseUtils(this.page); // Instantiate PulseUtils class
 
     // Elements on the Entry page
     this.email = page.getByPlaceholder('Enter email address');
@@ -20,29 +20,15 @@ exports.EntryPage = class EntryPage {
     this.dontHaveAccountLabel = page.getByText("Don't have an account?");
     this.termsOfServicesLink = page.getByText("Terms of service");
     this.privacyPolicyLink = page.getByText("Privacy policy");
-    this.dontHaveAccountLabel = page.getByText("Don't have an account?");
     this.signUpPageHeading = page.getByRole('heading', { name: 'Sign up for free' });
     this.loginPageHeading = page.getByRole('heading', { name: 'Welcome back!' });
     this.signInButton = page.getByRole('link', { name: 'Sign in' });
     this.forgotPassword = page.getByRole('link', { name: 'Forgot your password?' });
     this.forgotPasswordHeading = page.getByRole('heading', { name: 'Reset your password' });
-    this.announcementsBanner = "//div[@class='Frill_Notification_Banner__Content']";
-    this.viewAnnouncementBtn = page.locator("//button[@class='Frill_Notification__Button']");
-    this.iframeLocator = page.frameLocator("//iframe[@class='Frill_Frame']");
-    this.iframeCloseButton = this.iframeLocator.locator("//button[@aria-label='Close']");
     this.continueWithGoogleButton = page.getByText('Continue with Google');
     this.continueWithFacebookButton = page.getByText('Continue with Facebook');
-    this.signUpWithEmailButton = page.getByText('Sign Up with Email');
-    this.signupemailTextBox = page.locator("//input[@placeholder='Enter your email to continue']");
-    this.loginFailedMessage = page.getByText('Email or Password is incorrect');
-    this.workflowsHeader = page.locator("//p[text()='Workflows']");
-    this.googleEmailTextBox = page.locator("#identifierId");
-    this.googleNextBtn = page.locator("//span[text()='Next']/..");
-    this.googlePasswordNextBtn = page.locator("#passwordNext");
-    this.googlePasswordTextBox = page.locator("//input[@name='Passwd']");
     this.confirmationEmailOption = page.locator("//div[contains(text(),'Confirm your recovery email')]");
     this.confirmationEmailTextBox = page.locator("#knowledge-preregistered-email-response");
-    this.continueButton = page.locator("//span[text()='Continue']/..");
   }
 
   // Navigates to the application's URL specified in the environment config
@@ -84,13 +70,6 @@ exports.EntryPage = class EntryPage {
   // Verifies that the Forgot Password page is visible
   async verifyForgotPasswordPageVisibility() {
     await expect(this.forgotPasswordHeading).toBeVisible();
-  }
-
-  /**
-   * Clicks the 'Continue with Facebook' button to initiate the Facebook login.
-   */
-  async continueWithFacebook() {
-    await this.continueWithFacebookButton.click();
   }
 
   /**

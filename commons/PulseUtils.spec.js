@@ -1,10 +1,10 @@
 import { expect } from '@playwright/test';
 
 /**
- * Utility class providing common actions for repurposing workflows in the application.
+ * Utility class providing common actions for workflows in the application.
  * It includes methods for waiting, refreshing, navigating, and handling page elements.
  */
-export class RepurposeUtils {
+export class PulseUtils {
 
     /**
      * Constructor to initialize the page object and other utility locators
